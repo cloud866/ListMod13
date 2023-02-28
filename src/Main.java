@@ -26,14 +26,14 @@ public class Main {
         Car car17 = new Car(KIA, "Creed", false);
         Car car18 = new Car(TOYOTA, "Yaris", false);
         Car car19 = new Car(BMW, "320i", false);
-        Car car20 = new Car(TOYOTA, "Corolla", false);
+        Car car20 = new Car(TOYOTA, "Corolla", true);
         Car car21 = new Car(TOYOTA, "Camri", false);
         Car car22 = new Car(KIA, "Rio", false);
         Car car23 = new Car(BMW, "X5", false);
         Car car24 = new Car(BMW, "X3", false);
         Car car25 = new Car(BMW, "x6", false);
         Car car26 = new Car(TOYOTA, "Raw4", true);
-        Car car27 = new Car(KIA, "Creed", false);
+        Car car27 = new Car(KIA, "Creed", true);
         Car car28 = new Car(TOYOTA, "Yaris", false);
         Car car29 = new Car(BMW, "320i", false);
         Car car30 = new Car(TOYOTA, "Corolla", false);
@@ -70,11 +70,26 @@ public class Main {
         carList.add(car29);
         carList.add(car30);
 
-        Set<Car> carSet = new HashSet<>(carList);
+        Map<Car, Integer> carMap = new HashMap<>();
 
-        for (Car car : carSet) {
-            System.out.println(car);
+        for (Car car : carList) {
+            if (carMap.containsKey(car)) {
+                int value = carMap.get(car);
+                carMap.put(car, ++value);
+            } else {
+                carMap.put(car, 1);
+            }
         }
+
+        for (Map.Entry<Car, Integer> carEntry : carMap.entrySet()) {
+            System.out.println(carEntry.getKey() + "=" + carEntry.getValue());
+        }
+
+//        Set<Car> carSet = new HashSet<>(carList);
+//
+//        for (Car car : carSet) {
+//            System.out.println(car);
+//        }
 
 //        for (Car car : carList) {
 //            if (car.getBrand().equals(KIA)) {
